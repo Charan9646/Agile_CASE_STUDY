@@ -1,0 +1,207 @@
+ <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TeleCare — Contact & Support (Epic 3)</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <style>
+    body { background:#f8f9fa; }
+    .support-card { border-radius:12px; box-shadow:0 8px 28px rgba(3,10,24,0.06); }
+    .lead-quiet { color:#6c757d; }
+    .toast-container { position: fixed; top: 1rem; right: 1rem; z-index: 1080; }
+  </style>
+</head>
+<body>
+  <main class="container py-5">
+    <div class="row g-4">
+      <!-- Contact form -->
+      <div class="col-lg-7">
+        <h3>Contact Us</h3>
+        <p class="lead-quiet">Questions about using the platform? Send us a message and we'll get back within one business day.</p>
+
+        <form id="contactForm" novalidate>
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full name</label>
+            <input id="fullName" class="form-control" type="text" placeholder="Your name" required aria-required="true" />
+            <div class="invalid-feedback">Please enter your full name.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="contactEmail" class="form-label">Email</label>
+            <input id="contactEmail" class="form-control" type="email" placeholder="you@example.com" required aria-required="true" />
+            <div class="invalid-feedback">Please enter a valid email address.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="subject" class="form-label">Subject</label>
+            <input id="subject" class="form-control" type="text" placeholder="Short subject (optional)" />
+          </div>
+
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea id="message" class="form-control" rows="6" placeholder="How can we help?" required aria-required="true"></textarea>
+            <div class="invalid-feedback">Please describe your request.</div>
+          </div>
+
+          <div class="d-flex gap-2 align-items-center">
+            <button type="submit" class="btn btn-primary">Send message</button>
+            <button type="button" id="clearBtn" class="btn btn-outline-secondary">Clear</button>
+            <small class="text-muted ms-2">You can also reach us at <a href="mailto:support@telecare.example">support@telecare.example</a>.</small>
+          </div>
+        </form>
+      </div>
+
+      <!-- Support info -->
+      <div class="col-lg-5">
+        <div class="p-4 bg-white support-card h-100">
+          <h5>Operational Hours</h5>
+          <p class="mb-2 small text-muted">Mon — Sat • 8:00 AM — 8:00 PM</p>
+
+          <h6 class="mt-3">Support</h6>
+          <p class="mb-1"><i class="bi bi-telephone me-2"></i><a href="tel:+919876543210">+91 98765 43210</a></p>
+          <p class="mb-1"><i class="bi bi-envelope me-2"></i><a href="mailto:support@telecare.example">support@telecare.example</a></p>
+
+          <hr />
+
+          <h6>Urgent help</h6>
+          <p class="small text-muted mb-0">If this is a medical emergency, call local emergency services immediately.</p>
+
+          <div class="mt-4">
+            <h6 class="mb-2">Frequently asked</h6>
+            <ul class="small mb-0">
+              <li>How do I book a consultation? — Use the "Book Visit" button on the homepage.</li>
+              <li>Do you prescribe medications? — Yes, when clinically appropriate.</li>
+              <li>What payment methods are accepted? — Major cards and digital wallets.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Toast notifications -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Bootstrap JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Contact form handling for Epic 3
+    (function(){
+      const form = document.getElementById('contactForm');
+      const clearBtn = document.getElementById('clearBtn');
+      const toastContainer = document.getElementById('toastContainer');
+
+      function showToast(title, body, type = 'success') {
+        const toastEl = document.createElement('div');
+        toastEl.className = 'toast align-items-center text-bg-' + (type === 'success' ? 'success' : 'danger') + ' border-0';
+        toastEl.setAttribute('role', 'alert');
+        toastEl.setAttribute('aria-live', 'assertive');
+        toastEl.setAttribute('aria-atomic', 'true');
+        toastEl.innerHTML = `
+          <div class="d-flex">
+            <div class="toast-body">
+              <strong>${title}</strong><div>${body}</div>
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+          </div>
+        `;
+        toastContainer.appendChild(toastEl);
+        const bsToast = new bootstrap.Toast(toastEl, { delay: 5000 });
+        bsToast.show();
+        // remove from DOM after hide
+        toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
+      }
+
+      // basic client-side validation helpers
+      function isEmailValid(v) {
+        return /\S+@\S+\.\S+/.test(v);
+      }
+
+      function setInvalid(el, state) {
+        if (state) {
+          el.classList.add('is-invalid');
+          el.setAttribute('aria-invalid', 'true');
+        } else {
+          el.classList.remove('is-invalid');
+          el.removeAttribute('aria-invalid');
+        }
+      }
+
+      form.addEventListener('submit', async function(e){
+        e.preventDefault();
+
+        const nameEl = document.getElementById('fullName');
+        const emailEl = document.getElementById('contactEmail');
+        const messageEl = document.getElementById('message');
+
+        let hasError = false;
+        // validate name
+        if (!nameEl.value.trim()) { setInvalid(nameEl, true); hasError = true; } else setInvalid(nameEl, false);
+        // validate email
+        if (!isEmailValid(emailEl.value.trim())) { setInvalid(emailEl, true); hasError = true; } else setInvalid(emailEl, false);
+        // validate message
+        if (!messageEl.value.trim()) { setInvalid(messageEl, true); hasError = true; } else setInvalid(messageEl, false);
+
+        if (hasError) {
+          showToast('Validation error', 'Please fix the highlighted fields.', 'error');
+          return;
+        }
+
+        // build payload
+        const payload = {
+          name: nameEl.value.trim(),
+          email: emailEl.value.trim(),
+          subject: (document.getElementById('subject').value || '').trim(),
+          message: messageEl.value.trim(),
+          timestamp: new Date().toISOString()
+        };
+
+        // Simulate sending to backend. Replace URL with real endpoint.
+        try {
+          // show temporary sending toast
+          showToast('Sending', 'Submitting your message — please wait...', 'success');
+
+          // simulate network call with fetch to placeholder; in production replace the URL
+          const resp = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+
+          // handle both real and fake responses: consider 200-299 success
+          if (resp.ok) {
+            showToast('Message sent', 'Thanks — we will respond within one business day.', 'success');
+            form.reset();
+          } else {
+            // try to read json message
+            let text = 'Server error. Please try again later.';
+            try { const j = await resp.json(); if (j && j.message) text = j.message; } catch {}
+            showToast('Submission failed', text, 'error');
+          }
+        } catch (err) {
+          // network or CORS error
+          showToast('Network error', 'Could not send message. Check your connection.', 'error');
+          console.error('Contact submit error:', err);
+        }
+      });
+
+      clearBtn.addEventListener('click', () => {
+        form.reset();
+        Array.from(form.querySelectorAll('.is-invalid')).forEach(el => setInvalid(el, false));
+      });
+
+      // optional improvement: keyboard accessibility - focus first input on load
+      document.addEventListener('DOMContentLoaded', () => {
+        const first = document.getElementById('fullName');
+        if (first) first.focus();
+      });
+    })();
+  </script>
+</body>
+</html>
