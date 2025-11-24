@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TeleCare — Doctor-Patient Tele-Consultation</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <style>
+      :root {
+        --brand: #0d6efd;
+        --muted: #6c757d;
+      }
+      body { background: #f8f9fa; }
+      .hero { background: linear-gradient(90deg, rgba(13,110,253,0.06), rgba(13,110,253,0.03)); padding: 4rem 0; }
+      .card-doctor { border: 0; border-radius: 12px; box-shadow: 0 6px 20px rgba(15,23,42,0.06); }
+      .feature-icon { width:56px;height:56px;border-radius:12px;background:#fff;display:grid;place-items:center;box-shadow:0 6px 18px rgba(15,23,42,0.04); }
+      .step { min-height:120px; }
+      footer { background:#fff;border-top:1px solid #e9ecef; }
+      @media (min-width: 992px) {
+        .hero-img { height: 360px; object-fit: cover; border-radius: 12px; }
+      }
+
+      /* small improvements for modal form */
+      .form-section-title { font-weight:600; margin-top:0.75rem; margin-bottom:0.5rem; }
+      .health-grid { display:flex; flex-wrap:wrap; gap:0.5rem; }
+      .health-grid .form-check { min-width: 160px; }
+    </style>
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="#">TeleCare</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#doctors">Doctors</a></li>
+            <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item ms-3"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal"><i class="bi bi-calendar-check me-1"></i> Book Visit</button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <h1 class="display-6">Talk to a trusted doctor from the comfort of home</h1>
+            <p class="lead text-muted">Secure video & chat consultations, prescription delivery, and follow-up — all in one place.</p>
+            <div class="d-flex gap-2 mt-3">
+              <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#bookModal"><i class="bi bi-telephone-forward me-2"></i> Start Tele-Consultation</button>
+              <a class="btn btn-outline-secondary btn-lg" href="#doctors">Explore Doctors</a>
+            </div>
+
+            <div class="row row-cols-1 row-cols-sm-3 g-2 mt-4">
+              <div class="col"><small class="d-block text-muted">Avg wait</small><strong>8–15 mins</strong></div>
+              <div class="col"><small class="d-block text-muted">Consultations</small><strong>Video & Chat</strong></div>
+              <div class="col"><small class="d-block text-muted">Payment</small><strong>Secure & Cashless</strong></div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 d-none d-lg-block">
+            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1400&auto=format&fit=crop&s=abcd" alt="doctor consulting" class="hero-img shadow-sm" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-5">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="h4">Our Services</h2>
+          <p class="text-muted">Comprehensive care over video, chat, and secure messaging.</p>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="p-3 bg-white rounded-3 h-100 d-flex gap-3 align-items-start">
+              <div class="feature-icon"><i class="bi bi-camera-video fs-4 text-primary"></i></div>
+              <div>
+                <h5 class="mb-1">Video Consultation</h5>
+                <p class="mb-0 text-muted small">Real-time video visits with certified doctors.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 bg-white rounded-3 h-100 d-flex gap-3 align-items-start">
+              <div class="feature-icon"><i class="bi bi-chat-dots fs-4 text-primary"></i></div>
+              <div>
+                <h5 class="mb-1">Chat & Follow-up</h5>
+                <p class="mb-0 text-muted small">Secure messaging for quick questions and follow-up.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 bg-white rounded-3 h-100 d-flex gap-3 align-items-start">
+              <div class="feature-icon"><i class="bi bi-prescription fs-4 text-primary"></i></div>
+              <div>
+                <h5 class="mb-1">E-Prescriptions</h5>
+                <p class="mb-0 text-muted small">Get prescriptions delivered to your pharmacy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="py-5 bg-white">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="h4">How it works</h2>
+          <p class="text-muted">Simple 3-step process to see a doctor online.</p>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="p-4 step text-center rounded-3">
+              <div class="mb-3 display-6 text-primary"><i class="bi bi-1-circle"></i></div>
+              <h5>Book a Slot</h5>
+              <p class="text-muted small">Choose a time or request an immediate consult.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 step text-center rounded-3">
+              <div class="mb-3 display-6 text-primary"><i class="bi bi-2-circle"></i></div>
+              <h5>Meet the Doctor</h5>
+              <p class="text-muted small">Secure video call with your selected specialist.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 step text-center rounded-3">
+              <div class="mb-3 display-6 text-primary"><i class="bi bi-3-circle"></i></div>
+              <h5>Get Care</h5>
+              <p class="text-muted small">Receive e-prescriptions and follow-up reminders.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCTORS LIST -->
+    <section id="doctors" class="py-5">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h3 class="h5 mb-0">Available Doctors</h3>
+          <a href="#" class="small text-decoration-none">See all</a>
+        </div>
+
+        <div class="row g-3">
+          <!-- Doctor cards (full list reattached) -->
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="General Physician">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr Patel" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Amit Patel</h6>
+                  <small class="text-muted">General Physician • 10 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="Pediatrician">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dr Sharma" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Neha Sharma</h6>
+                  <small class="text-muted">Pediatrician • 7 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="Dermatologist">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Dr Khan" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Imran Khan</h6>
+                  <small class="text-muted">Dermatologist • 12 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="Cardiologist">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="Dr Rao" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Suresh Rao</h6>
+                  <small class="text-muted">Cardiologist • 15 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="Gynecologist">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dr Iyer" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Priya Iyer</h6>
+                  <small class="text-muted">Gynecologist • 11 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="Orthopedist">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Dr Verma" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Rohit Verma</h6>
+                  <small class="text-muted">Orthopedist • 9 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="Neurologist">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/women/25.jpg" alt="Dr Das" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Shalini Das</h6>
+                  <small class="text-muted">Neurologist • 13 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="ENT Specialist">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/men/48.jpg" alt="Dr Kaur" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Aman Kaur</h6>
+                  <small class="text-muted">ENT Specialist • 8 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="Ophthalmologist">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/men/5.jpg" alt="Dr Nair" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Arjun Nair</h6>
+                  <small class="text-muted">Ophthalmologist • 14 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="Endocrinologist">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="Dr Gupta" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Neeta Gupta</h6>
+                  <small class="text-muted">Endocrinologist • 10 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="Dentist">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Dr Singh" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Vikram Singh</h6>
+                  <small class="text-muted">Dentist • 6 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="Pulmonologist">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Dr Malhotra" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Sameer Malhotra</h6>
+                  <small class="text-muted">Pulmonologist • 12 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="Gastroenterologist">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/women/36.jpg" alt="Dr Rao2" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Kavita Rao</h6>
+                  <small class="text-muted">Gastroenterologist • 9 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="Urologist">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="Dr Mehra" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Rakesh Mehra</h6>
+                  <small class="text-muted">Urologist • 11 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-6 col-md-4 col-lg-3">
+            <div class="card card-doctor p-3" data-specialty="Nephrologist">
+              <div class="d-flex gap-3 align-items-center">
+                <img src="https://randomuser.me/api/portraits/women/5.jpg" alt="Dr Bhatia" class="rounded-circle" width="64" height="64" />
+                <div>
+                  <h6 class="mb-0">Dr. Anjali Bhatia</h6>
+                  <small class="text-muted">Nephrologist • 14 yrs</small>
+                  <div class="mt-2">
+                    <button class="btn btn-sm btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#bookModal">Book</button>
+                    <a href="#" class="btn btn-sm btn-link">Profile</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h4 class="h5">What patients say</h4>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="p-3 bg-light rounded-3">
+              <p class="mb-1 small text-muted">"Quick, professional, and very helpful — doctor listened and prescribed exactly what I needed."</p>
+              <small class="fw-semibold">— Priya K.</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 bg-light rounded-3">
+              <p class="mb-1 small text-muted">"Great for busy parents. Pediatrician was patient and thorough."</p>
+              <small class="fw-semibold">— Arjun S.</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 bg-light rounded-3">
+              <p class="mb-1 small text-muted">"E-prescriptions delivered fast — saved me an extra visit to clinic."</p>
+              <small class="fw-semibold">— Meera D.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & FOOTER -->
+    <section id="contact" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <h5>Contact Us</h5>
+            <p class="text-muted">Questions about using the platform? Send us a message and we'll get back within one business day.</p>
+
+            <form>
+              <div class="mb-3">
+                <label class="form-label small">Full name</label>
+                <input class="form-control" placeholder="Your name" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label small">Email</label>
+                <input class="form-control" placeholder="you@example.com" type="email" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label small">Message</label>
+                <textarea class="form-control" rows="4" placeholder="How can we help?"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </form>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="bg-white p-4 rounded-3 shadow-sm">
+              <h6>Operational Hours</h6>
+              <p class="mb-1 small text-muted">24/7-> 365 DAYS</p>
+              <h6 class="mt-3">Support</h6>
+              <p class="small mb-0 text-muted"><i class="bi bi-telephone me-1"></i> +91 9xxxxxxxx0</p>
+              <p class="small text-muted"><i class="bi bi-envelope me-1"></i> support@texxxxxe.example</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-4">
+      <div class="container d-flex justify-content-between align-items-center">
+        <small class="text-muted">© TeleCare 2025</small>
+        <div>
+          <a class="text-muted small me-3" href="#">Privacy</a>
+          <a class="text-muted small" href="#">Terms</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- BOOKING MODAL -->
+    <div class="modal fade" id="bookModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Book Tele-Consultation</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="bookingForm" novalidate>
+              <!-- Full name -->
+              <div class="mb-3">
+                <label class="form-label">Full name</label>
+                <input type="text" class="form-control" id="name" required />
+              </div>
+
+              <!-- Age -->
+              <div class="mb-3">
+                <label class="form-label">Age</label>
+                <input type="number" min="0" step="1" class="form-control" id="age" placeholder="e.g. 29" required />
+              </div>
+
+              <!-- Gender -->
+              <div class="mb-3">
+                <div class="form-section-title">Gender</div>
+                <div class="d-flex gap-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="genderMale" value="Male" required>
+                    <label class="form-check-label" for="genderMale">Male</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="Female">
+                    <label class="form-check-label" for="genderFemale">Female</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="genderOther" value="Other">
+                    <label class="form-check-label" for="genderOther">Other</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Blood group (NEW) -->
+              <div class="mb-3">
+                <label class="form-label">Blood group</label>
+                <select class="form-select" id="bloodGroup" required>
+                  <option value="" disabled selected>— Select blood group —</option>
+                  <option>A+</option>
+                  <option>A-</option>
+                  <option>B+</option>
+                  <option>B-</option>
+                  <option>AB+</option>
+                  <option>AB-</option>
+                  <option>O+</option>
+                  <option>O-</option>
+                </select>
+              </div>
+
+              <!-- Health status -->
+              <div class="mb-3">
+                <div class="form-section-title">Health conditions (check all that apply)</div>
+                <div class="health-grid">
+                  <div class="form-check">
+                    <input class="form-check-input health-condition" type="checkbox" id="condDiabetic" value="Diabetic">
+                    <label class="form-check-label" for="condDiabetic">Diabetic</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input health-condition" type="checkbox" id="condBP" value="High blood pressure">
+                    <label class="form-check-label" for="condBP">High blood pressure</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input health-condition" type="checkbox" id="condHeart" value="Heart disease">
+                    <label class="form-check-label" for="condHeart">Heart disease</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input health-condition" type="checkbox" id="condAsthma" value="Asthma">
+                    <label class="form-check-label" for="condAsthma">Asthma</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input health-condition" type="checkbox" id="condNone" value="None">
+                    <label class="form-check-label" for="condNone">None</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Patient group -->
+              <div class="mb-3">
+                <label class="form-label">Patient group</label>
+                <select class="form-select" id="patientGroup" required>
+                  <option value="" disabled selected>— Select group —</option>
+                  <option>Adult</option>
+                  <option>Child</option>
+                  <option>Senior</option>
+                  <option>Pregnant</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <!-- Email (contact) -->
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required />
+              </div>
+
+              <!-- Dynamic specialty select -->
+              <div class="mb-3">
+                <label class="form-label">Select specialty</label>
+                <select class="form-select" id="specialty" required>
+                  <!-- options will be injected dynamically -->
+                </select>
+              </div>
+
+              <!-- Preferred date & time -->
+              <div class="mb-3">
+                <label class="form-label">Preferred date & time</label>
+                <input type="datetime-local" class="form-control" id="dt" required />
+              </div>
+
+              <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Confirm</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Utility: collect unique specialties from cards
+      function collectSpecialties() {
+        const set = new Set();
+        document.querySelectorAll('.card-doctor[data-specialty]').forEach(card => {
+          const s = (card.getAttribute('data-specialty') || '').trim();
+          if (s) set.add(s);
+        });
+        return Array.from(set).sort((a,b) => a.localeCompare(b));
+      }
+
+      // Populate specialty select element
+      function populateSpecialtySelect() {
+        const select = document.getElementById('specialty');
+        if (!select) return;
+        const specialties = collectSpecialties();
+        select.innerHTML = ''; // clear existing
+        if (specialties.length === 0) {
+          // fallback options
+          const fallback = ['General Physician','Pediatrician','Dermatologist'];
+          fallback.forEach(v => {
+            const opt = document.createElement('option');
+            opt.value = v;
+            opt.textContent = v;
+            select.appendChild(opt);
+          });
+          return;
+        }
+        // add an initial placeholder option
+        const placeholder = document.createElement('option');
+        placeholder.value = '';
+        placeholder.textContent = '— Select a specialty —';
+        placeholder.disabled = true;
+        placeholder.selected = true;
+        select.appendChild(placeholder);
+
+        specialties.forEach(v => {
+          const opt = document.createElement('option');
+          opt.value = v;
+          opt.textContent = v;
+          select.appendChild(opt);
+        });
+      }
+
+      // Health "None" logic: if None checked -> disable/uncheck other condition checkboxes; if any other checked -> uncheck None
+      function setupHealthConditionLogic() {
+        const noneCheckbox = document.getElementById('condNone');
+        const conditionCheckboxes = Array.from(document.querySelectorAll('.health-condition'));
+        if (!noneCheckbox) return;
+
+        function onNoneChange() {
+          if (noneCheckbox.checked) {
+            conditionCheckboxes.forEach(cb => {
+              if (cb !== noneCheckbox) {
+                cb.checked = false;
+                cb.disabled = true;
+              }
+            });
+          } else {
+            conditionCheckboxes.forEach(cb => {
+              if (cb !== noneCheckbox) cb.disabled = false;
+            });
+          }
+        }
+
+        function onOtherChange(e) {
+          if (e.target.checked) {
+            noneCheckbox.checked = false;
+            noneCheckbox.disabled = true;
+          } else {
+            // if no other is checked, re-enable none
+            const anyChecked = conditionCheckboxes.some(cb => cb !== noneCheckbox && cb.checked);
+            if (!anyChecked) noneCheckbox.disabled = false;
+          }
+        }
+
+        noneCheckbox.addEventListener('change', onNoneChange);
+        conditionCheckboxes.forEach(cb => {
+          if (cb !== noneCheckbox) cb.addEventListener('change', onOtherChange);
+        });
+      }
+
+      // Populate when DOM loaded
+      document.addEventListener('DOMContentLoaded', () => {
+        populateSpecialtySelect();
+        setupHealthConditionLogic();
+
+        // Re-populate whenever the modal is shown (keeps it in sync if doctor list changes later)
+        const bookModalEl = document.getElementById('bookModal');
+        if (bookModalEl) {
+          bookModalEl.addEventListener('show.bs.modal', () => {
+            populateSpecialtySelect();
+            // ensure placeholder visible after previous submissions
+            const sel = document.getElementById('specialty');
+            if (sel && sel.options.length > 0) sel.selectedIndex = 0;
+          });
+        }
+
+        // Booking form handler
+        const bookingForm = document.getElementById('bookingForm');
+        bookingForm && bookingForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+
+          // collect values
+          const name = document.getElementById('name').value.trim();
+          const ageVal = document.getElementById('age').value;
+          const age = ageVal ? parseInt(ageVal, 10) : null;
+          const gender = (document.querySelector('input[name="gender"]:checked') || {}).value;
+          const bloodGroup = (document.getElementById('bloodGroup') || {}).value;
+          const email = document.getElementById('email').value.trim();
+          const patientGroup = document.getElementById('patientGroup').value;
+          const specialty = document.getElementById('specialty').value;
+          const dt = document.getElementById('dt').value;
+
+          // collect health conditions
+          const healthCheckboxes = Array.from(document.querySelectorAll('.health-condition'));
+          const selectedConditions = healthCheckboxes.filter(cb => cb.checked).map(cb => cb.value);
+          // if none selected, we treat as 'None'
+          const conditions = selectedConditions.length ? selectedConditions : ['None'];
+
+          // simple validation
+          const errors = [];
+          if (!name) errors.push('Full name is required.');
+          if (!age || Number.isNaN(age) || age < 0) errors.push('Valid age is required.');
+          if (!gender) errors.push('Please select gender.');
+          if (!bloodGroup) errors.push('Please select blood group.');
+          if (!email) errors.push('Email is required.');
+          if (!patientGroup) errors.push('Please select patient group.');
+          if (!specialty) errors.push('Please select a specialty.');
+          if (!dt) errors.push('Please select preferred date & time.');
+
+          if (errors.length) {
+            alert('Please fix the following:\n\n' + errors.join('\n'));
+            return;
+          }
+
+          // hide modal
+          const modal = bootstrap.Modal.getOrCreateInstance(bookModalEl);
+          modal.hide();
+
+          // demo confirmation - in real app you'd POST to backend
+          const message =
+            `Thanks, ${name}!\n\n` +
+            `Details:\n` +
+            `• Age: ${age}\n` +
+            `• Gender: ${gender}\n` +
+            `• Blood group: ${bloodGroup}\n` +
+            `• Group: ${patientGroup}\n` +
+            `• Conditions: ${conditions.join(', ')}\n` +
+            `• Specialty: ${specialty}\n` +
+            `• Appointment: ${new Date(dt).toLocaleString()}\n\n` +
+            `A confirmation will be sent to ${email}.`;
+
+          // Use alert for demo (replace with toast/modal in production)
+          alert(message);
+
+          // reset form to initial state
+          this.reset();
+          // re-enable condition checkboxes & repopulate specialties placeholder
+          document.querySelectorAll('.health-condition').forEach(cb => cb.disabled = false);
+          populateSpecialtySelect();
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+:root {
+  --brand: #0d6efd;
+  --muted: #6c757d;
+}
+body { background: #f8f9fa; }
+.hero { background: linear-gradient(90deg, rgba(13,110,253,0.06), rgba(13,110,253,0.03)); padding: 4rem 0; }
+.card-doctor { border: 0; border-radius: 12px; box-shadow: 0 6px 20px rgba(15,23,42,0.06); }
+.feature-icon { width:56px;height:56px;border-radius:12px;background:#fff;display:grid;place-items:center;box-shadow:0 6px 18px rgba(15,23,42,0.04); }
+.step { min-height:120px; }
+footer { background:#fff;border-top:1px solid #e9ecef; }
+
+@media (min-width: 992px) {
+  .hero-img { height: 360px; object-fit: cover; border-radius: 12px; }
+}
+
+/* small improvements for modal form */
+.form-section-title { font-weight:600; margin-top:0.75rem; margin-bottom:0.5rem; }
+.health-grid { display:flex; flex-wrap:wrap; gap:0.5rem; }
+.health-grid .form-check { min-width: 160px; }
+
+/* bottom appointment button */
+.btn-appointments {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 1100;
+  border-radius: 999px;
+  padding: 10px 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  background: var(--brand);
+  color: #fff;
+  border: none;
+  font-weight: 600;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* appointments panel */
+.appointments-panel {
+  position: fixed;
+  right: 18px;
+  bottom: 72px;
+  width: 320px;
+  max-height: 420px;
+  overflow: auto;
+  z-index: 1100;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(15,23,42,0.12);
+  padding: 12px;
+  display: none;
+}
+.appointment-item { padding: 8px; border-bottom: 1px solid #f1f1f1; }
+.appointment-item:last-child { border-bottom: none; }
+.appointment-title { font-weight:600; }
+.appointment-time { font-size: 0.9rem; color: var(--muted); }

@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TeleCare — Doctor-Patient Tele-Consultation</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <!-- local stylesheet -->
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="#">TeleCare</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="#doctors">Doctors</a></li>
+            <li class="nav-item"><a class="nav-link" href="#how">How it works</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item ms-3"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#bookModal"><i class="bi bi-calendar-check me-1"></i> Book Visit</button></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <h1 class="display-6">Talk to a trusted doctor from the comfort of home</h1>
+            <p class="lead text-muted">Secure video & chat consultations, prescription delivery, and follow-up — all in one place.</p>
+            <div class="d-flex gap-2 mt-3">
+              <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#bookModal"><i class="bi bi-telephone-forward me-2"></i> Start Tele-Consultation</button>
+              <a class="btn btn-outline-secondary btn-lg" href="#doctors">Explore Doctors</a>
+            </div>
+
+            <div class="row row-cols-1 row-cols-sm-3 g-2 mt-4">
+              <div class="col"><small class="d-block text-muted">Avg wait</small><strong>8–15 mins</strong></div>
+              <div class="col"><small class="d-block text-muted">Consultations</small><strong>Video & Chat</strong></div>
+              <div class="col"><small class="d-block text-muted">Payment</small><strong>Secure & Cashless</strong></div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 d-none d-lg-block">
+            <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=1400&auto=format&fit=crop&s=abcd" alt="doctor consulting" class="hero-img shadow-sm" />
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- SERVICES -->
+    <section id="services" class="py-5">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="h4">Our Services</h2>
+          <p class="text-muted">Comprehensive care over video, chat, and secure messaging.</p>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="p-3 bg-white rounded-3 h-100 d-flex gap-3 align-items-start">
+              <div class="feature-icon"><i class="bi bi-camera-video fs-4 text-primary"></i></div>
+              <div>
+                <h5 class="mb-1">Video Consultation</h5>
+                <p class="mb-0 text-muted small">Real-time video visits with certified doctors.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 bg-white rounded-3 h-100 d-flex gap-3 align-items-start">
+              <div class="feature-icon"><i class="bi bi-chat-dots fs-4 text-primary"></i></div>
+              <div>
+                <h5 class="mb-1">Chat & Follow-up</h5>
+                <p class="mb-0 text-muted small">Secure messaging for quick questions and follow-up.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-3 bg-white rounded-3 h-100 d-flex gap-3 align-items-start">
+              <div class="feature-icon"><i class="bi bi-prescription fs-4 text-primary"></i></div>
+              <div>
+                <h5 class="mb-1">E-Prescriptions</h5>
+                <p class="mb-0 text-muted small">Get prescriptions delivered to your pharmacy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="py-5 bg-white">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h2 class="h4">How it works</h2>
+          <p class="text-muted">Simple 3-step process to see a doctor online.</p>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="p-4 step text-center rounded-3">
+              <div class="mb-3 display-6 text-primary"><i class="bi bi-1-circle"></i></div>
+              <h5>Book a Slot</h5>
+              <p class="text-muted small">Choose a time or request an immediate consult.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 step text-center rounded-3">
+              <div class="mb-3 display-6 text-primary"><i class="bi bi-2-circle"></i></div>
+              <h5>Meet the Doctor</h5>
+              <p class="text-muted small">Secure video call with your selected specialist.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-4 step text-center rounded-3">
+              <div class="mb-3 display-6 text-primary"><i class="bi bi-3-circle"></i></div>
+              <h5>Get Care</h5>
+              <p class="text-muted small">Receive e-prescriptions and follow-up reminders.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCTORS LIST -->
+    <section id="doctors" class="py-5">
+      <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h3 class="h5 mb-0">Available Doctors</h3>
+          <a href="#" class="small text-decoration-none">See all</a>
+        </div>
+
+        <div class="row g-3" id="doctorsList">
+          <!-- doctor cards (same content as your original). Script will leave unchanged -->
+          <!-- For demo include some example cards -->
+          <div class="col-md-4">
+            <div class="card card-doctor p-3" data-specialty="General Physician">
+              <div class="d-flex gap-3">
+                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Dr." width="64" height="64" class="rounded-circle" />
+                <div>
+                  <h6 class="mb-0">Dr. Amit Patel</h6>
+                  <small class="text-muted">General Physician</small>
+                  <div class="mt-2"><button class="btn btn-sm btn-outline-primary book-doctor" data-doctor="Dr. Amit Patel">Book</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card card-doctor p-3" data-specialty="Pediatrician">
+              <div class="d-flex gap-3">
+                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Dr." width="64" height="64" class="rounded-circle" />
+                <div>
+                  <h6 class="mb-0">Dr. Neha Sharma</h6>
+                  <small class="text-muted">Pediatrician</small>
+                  <div class="mt-2"><button class="btn btn-sm btn-outline-primary book-doctor" data-doctor="Dr. Neha Sharma">Book</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        
+          <div class="col-md-4">
+            <div class="card card-doctor p-3" data-specialty="Dermatologist">
+              <div class="d-flex gap-3">
+                <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Dr." width="64" height="64" class="rounded-circle" />
+                <div>
+                  <h6 class="mb-0">Dr. Imran Khan</h6>
+                  <small class="text-muted">Dermatologist</small>
+                  <div class="mt-2"><button class="btn btn-sm btn-outline-primary book-doctor" data-doctor="Dr. Imran Khan">Book</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card card-doctor p-3" data-specialty="Cardiologist">
+              <div class="d-flex gap-3">
+                <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="Dr." width="64" height="64" class="rounded-circle" />
+                <div>
+                  <h6 class="mb-0">Dr. Suresh Rao</h6>
+                  <small class="text-muted">Cardiologist</small>
+                  <div class="mt-2"><button class="btn btn-sm btn-outline-primary book-doctor" data-doctor="Dr. Suresh Rao">Book</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card card-doctor p-3" data-specialty="Gynecologist">
+              <div class="d-flex gap-3">
+                <img src="https://randomuser.me/api/portraits/women/21.jpg" alt="Dr." width="64" height="64" class="rounded-circle" />
+                <div>
+                  <h6 class="mb-0">Dr. Priya Iyer</h6>
+                  <small class="text-muted">Gynecologist</small>
+                  <div class="mt-2"><button class="btn btn-sm btn-outline-primary book-doctor" data-doctor="Dr. Priya Iyer">Book</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card card-doctor p-3" data-specialty="Orthopedist">
+              <div class="d-flex gap-3">
+                <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Dr." width="64" height="64" class="rounded-circle" />
+                <div>
+                  <h6 class="mb-0">Dr. Rohit Verma</h6>
+                  <small class="text-muted">Orthopedist</small>
+                  <div class="mt-2"><button class="btn btn-sm btn-outline-primary book-doctor" data-doctor="Dr. Rohit Verma">Book</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card card-doctor p-3" data-specialty="Neurologist">
+              <div class="d-flex gap-3">
+                <img src="https://randomuser.me/api/portraits/women/34.jpg" alt="Dr." width="64" height="64" class="rounded-circle" />
+                <div>
+                  <h6 class="mb-0">Dr. Shalini Das</h6>
+                  <small class="text-muted">Neurologist</small>
+                  <div class="mt-2"><button class="btn btn-sm btn-outline-primary book-doctor" data-doctor="Dr. Shalini Das">Book</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card card-doctor p-3" data-specialty="Dentist">
+              <div class="d-flex gap-3">
+                <img src="https://randomuser.me/api/portraits/men/66.jpg" alt="Dr." width="64" height="64" class="rounded-circle" />
+                <div>
+                  <h6 class="mb-0">Dr. Vikram Singh</h6>
+                  <small class="text-muted">Dentist</small>
+                  <div class="mt-2"><button class="btn btn-sm btn-outline-primary book-doctor" data-doctor="Dr. Vikram Singh">Book</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card card-doctor p-3" data-specialty="ENT Specialist">
+              <div class="d-flex gap-3">
+                <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Dr." width="64" height="64" class="rounded-circle" />
+                <div>
+                  <h6 class="mb-0">Dr. Aman Kaur</h6>
+                  <small class="text-muted">ENT Specialist</small>
+                  <div class="mt-2"><button class="btn btn-sm btn-outline-primary book-doctor" data-doctor="Dr. Aman Kaur">Book</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card card-doctor p-3" data-specialty="Ophthalmologist">
+              <div class="d-flex gap-3">
+                <img src="https://randomuser.me/api/portraits/women/18.jpg" alt="Dr." width="64" height="64" class="rounded-circle" />
+                <div>
+                  <h6 class="mb-0">Dr. Arjun Nair</h6>
+                  <small class="text-muted">Ophthalmologist</small>
+                  <div class="mt-2"><button class="btn btn-sm btn-outline-primary book-doctor" data-doctor="Dr. Arjun Nair">Book</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="card card-doctor p-3" data-specialty="Pulmonologist">
+              <div class="d-flex gap-3">
+                <img src="https://randomuser.me/api/portraits/men/70.jpg" alt="Dr." width="64" height="64" class="rounded-circle" />
+                <div>
+                  <h6 class="mb-0">Dr. Sameer Malhotra</h6>
+                  <small class="text-muted">Pulmonologist</small>
+                  <div class="mt-2"><button class="btn btn-sm btn-outline-primary book-doctor" data-doctor="Dr. Sameer Malhotra">Book</button></div>
+                </div>
+              </div>
+            </div>
+          </div>
+</div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <div class="text-center mb-4">
+          <h4 class="h5">What patients say</h4>
+        </div>
+        <div class="row g-3">
+          <div class="col-md-4">
+            <div class="p-3 bg-light rounded-3">
+              <p class="mb-1 small text-muted">"Quick, professional, and very helpful — doctor listened and prescribed exactly what I needed."</p>
+              <small class="fw-semibold">— Priya K.</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 bg-light rounded-3">
+              <p class="mb-1 small text-muted">"Great for busy parents. Pediatrician was patient and thorough."</p>
+              <small class="fw-semibold">— Arjun S.</small>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="p-3 bg-light rounded-3">
+              <p class="mb-1 small text-muted">"E-prescriptions delivered fast — saved me an extra visit to clinic."</p>
+              <small class="fw-semibold">— Meera D.</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT & FOOTER -->
+    <section id="contact" class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 mb-4">
+            <h5>Contact Us</h5>
+            <p class="text-muted">Questions about using the platform? Send us a message and we'll get back within one business day.</p>
+
+            <form id="contactForm">
+              <div class="mb-3">
+                <label class="form-label small">Full name</label>
+                <input class="form-control" placeholder="Your name" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label small">Email</label>
+                <input class="form-control" placeholder="you@example.com" type="email" />
+              </div>
+              <div class="mb-3">
+                <label class="form-label small">Message</label>
+                <textarea class="form-control" rows="4" placeholder="How can we help?"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send message</button>
+            </form>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="bg-white p-4 rounded-3 shadow-sm">
+              <h6>Operational Hours</h6>
+              <p class="mb-1 small text-muted">24/7 -> 365 DAYS</p>
+              <h6 class="mt-3">Support</h6>
+              <p class="small mb-0 text-muted"><i class="bi bi-telephone me-1"></i> +91 9xxxxxxxx0</p>
+              <p class="small text-muted"><i class="bi bi-envelope me-1"></i> support@texxxxxe.example</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-4">
+      <div class="container d-flex justify-content-between align-items-center">
+        <small class="text-muted">© TeleCare 2025</small>
+        <div>
+          <a class="text-muted small me-3" href="#">Privacy</a>
+          <a class="text-muted small" href="#">Terms</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- BOOKING MODAL (same form fields; script.js will POST to backend) -->
+    <div class="modal fade" id="bookModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Book Tele-Consultation</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="bookingForm" novalidate>
+              <div class="mb-3">
+                <label class="form-label">Full name</label>
+                <input type="text" class="form-control" id="name" required />
+              </div>
+              <div class="mb-3">
+                <label class="form-label">Age</label>
+                <input type="number" min="0" step="1" class="form-control" id="age" required />
+              </div>
+              <div class="mb-3">
+                <div class="form-section-title">Gender</div>
+                <div class="d-flex gap-3">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="genderMale" value="Male" required>
+                    <label class="form-check-label" for="genderMale">Male</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="Female">
+                    <label class="form-check-label" for="genderFemale">Female</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="genderOther" value="Other">
+                    <label class="form-check-label" for="genderOther">Other</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Blood group</label>
+                <select class="form-select" id="bloodGroup" required>
+                  <option value="" disabled selected>— Select blood group —</option>
+                  <option>A+</option>
+                  <option>A-</option>
+                  <option>B+</option>
+                  <option>B-</option>
+                  <option>AB+</option>
+                  <option>AB-</option>
+                  <option>O+</option>
+                  <option>O-</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <div class="form-section-title">Health conditions (check all that apply)</div>
+                <div class="health-grid">
+                  <div class="form-check">
+                    <input class="form-check-input health-condition" type="checkbox" id="condDiabetic" value="Diabetic">
+                    <label class="form-check-label" for="condDiabetic">Diabetic</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input health-condition" type="checkbox" id="condBP" value="High blood pressure">
+                    <label class="form-check-label" for="condBP">High blood pressure</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input health-condition" type="checkbox" id="condHeart" value="Heart disease">
+                    <label class="form-check-label" for="condHeart">Heart disease</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input health-condition" type="checkbox" id="condAsthma" value="Asthma">
+                    <label class="form-check-label" for="condAsthma">Asthma</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input health-condition" type="checkbox" id="condNone" value="None">
+                    <label class="form-check-label" for="condNone">None</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Patient group</label>
+                <select class="form-select" id="patientGroup" required>
+                  <option value="" disabled selected>— Select group —</option>
+                  <option>Adult</option>
+                  <option>Child</option>
+                  <option>Senior</option>
+                  <option>Pregnant</option>
+                  <option>Other</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required />
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Select specialty</label>
+                <select class="form-select" id="specialty" required>
+                  <!-- options injected by script.js -->
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Preferred date & time</label>
+                <input type="datetime-local" class="form-control" id="dt" required />
+              </div>
+
+              <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-secondary me-2" data-bs-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-primary">Confirm</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom button for "next 3 days" appointments -->
+    <button id="showNext3Btn" class="btn-appointments" title="Show next 3 days appointments">
+      <i class="bi bi-calendar3"></i> Next 3 days
+    </button>
+
+    <!-- hidden container to show appointments after pressing button -->
+    <div id="appointmentsPanel" class="appointments-panel" aria-hidden="true"></div>
+
+    <!-- Bootstrap JS bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- local script -->
+    <script src="/script.js"></script>
+  </body>
+</html>
